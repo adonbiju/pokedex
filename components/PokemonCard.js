@@ -1,13 +1,21 @@
 import { View ,Text, StyleSheet ,Image , TouchableWithoutFeedback } from "react-native"
-//import { useNavigation } from "@react-navigation/native";
+import { useNavigation } from "@react-navigation/native";
 import getColorByPokemonType from "../constants/constants";
 const PokemonCard = (props) => {
-    const { pokemon } = props;
+  
+  const { pokemon } = props;
   //console.log(pokemon.type)
+  const navigation = useNavigation();
   const pokemonColor = getColorByPokemonType(pokemon.type);
   const bgStyles = { backgroundColor: pokemonColor, ...styles.bgStyles };
+  
+  const goToPokemonDetails=()=>{
+    //console.log(`Details---->${pokemon.name}`)
+    navigation.navigate("Details",{id: pokemon.id })
+  }
+
   return (
-    <TouchableWithoutFeedback>
+    <TouchableWithoutFeedback onPress={goToPokemonDetails}>
     <View style={styles.card}>
       <View style={styles.spacing}>
         <View style={bgStyles}>
