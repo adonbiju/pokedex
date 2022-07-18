@@ -15,6 +15,7 @@ export const TabNavigator = (props) => {
           tabBarIndicatorStyle: { backgroundColor: '#ccc', },
           tabBarLabelStyle: { textTransform: 'capitalize' },
           tabBarStyle: { elevation: 1 },
+          
         }}
       >
         <Tab.Screen name="About" initialParams={pokemon} component={AboutTab} />

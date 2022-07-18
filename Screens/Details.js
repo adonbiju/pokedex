@@ -45,6 +45,6 @@ const styles = StyleSheet.create({
       width: '100%',
       flex: 1,
       paddingHorizontal: 0,
-      paddingTop: 300
+      paddingTop: 280
   }
 })
