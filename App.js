@@ -3,6 +3,7 @@ import { NavigationContainer, DefaultTheme } from "@react-navigation/native";
 
 import Home from './Screens/Home';
 import Details from './Screens/Details';
+import Bookmarks from "./Screens/Bookmarks";
 
 const theme = {
   ...DefaultTheme,
@@ -26,6 +27,7 @@ const Stack = createStackNavigator();
       
       <Stack.Screen name="Home" component={Home} />
       <Stack.Screen name="Details" component={Details} />
+      <Stack.Screen name="Bookmarks" component={Bookmarks} />
     </Stack.Navigator>
   </NavigationContainer>
   )

@@ -1,9 +1,14 @@
 import React from 'react'
-import { View, Text, StyleSheet, SafeAreaView, Image } from "react-native";
+import { View, Text, StyleSheet, SafeAreaView, Image,Alert } from "react-native";
 import getColorByPokemonType from "../constants/constants";
+ import { CircleButton } from './Button';
+import assets from '../constants/assets'
+import AsyncStorage from '@react-native-async-storage/async-storage';
+
 
 const DetailHeader = (props) => {
-const { name, order, image, type } = props;
+const { name, order, image, type,navigation } = props;
+
  //console.log(name)
     const color = getColorByPokemonType(type);
     const bgStyles = [{ backgroundColor: color, ...styles.bg }];
@@ -11,6 +16,33 @@ const { name, order, image, type } = props;
     <>
     <View style={bgStyles} />
     <SafeAreaView style={styles.content}>
+
+    <View>
+      <CircleButton
+        imgUrl={assets.leftarrow}
+        handlePress={() => navigation.goBack()}        
+      />
+  
+      <CircleButton
+        imgUrl={assets.heart}
+        right={1}
+        handleBookMarkPress={
+          
+             async() => {
+              try {
+                const value=props
+                const jsonValue = JSON.stringify(value)
+                await AsyncStorage.setItem('@storage_Key', jsonValue)
+                Alert.alert('Bookmarked!!!! ')
+              } catch (e) {
+                // saving error
+              }
+            }
+          
+        } 
+      />
+    </View>
+
       <View style={styles.header}>
         <Text style={styles.name}>{name}</Text>
         <Text style={styles.order}>#{`${order}`.padStart(3, 0)}</Text>

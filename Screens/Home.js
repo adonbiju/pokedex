@@ -1,9 +1,11 @@
 import { useState ,useEffect} from "react";
-import { View,SafeAreaView, FlatList ,Text } from "react-native";
+import { View,SafeAreaView} from "react-native";
 import PokemonList from "../components/PokemonList"; 
  import { getPokemonDetailsByUrlApi,getPokemonsApi } from "../API/API";
 import HomeSearch from "../components/HomeSearch";
 import FocusedStatusBar from "../components/FocusedStatusBar";
+import AsyncStorage from '@react-native-async-storage/async-storage';
+import { RectButton } from "../components/Button";
 
 const Home = () => {
     const [pokemons, setPokemons] = useState([]);
@@ -54,13 +56,31 @@ const Home = () => {
           setPokemons(filteredData);
         }
       }
+//--------------------------------------------      
+const getData = async () => {
+  try {
+    const value = await AsyncStorage.getItem('@storage_Key')
+    //console.log(value)
+    if(value !== null) {
+      // value previously stored
+    }
+  } catch(e) {
+    // error reading value
+  }
+}
+
+//-----------------------------
   return (
     <SafeAreaView >
+  
       <FocusedStatusBar backgroundColor={"#001F2D"} />
       <View  >
+      <RectButton bookmarks={getData}/>
       <HomeSearch onSearch={handleSearch} />
        <PokemonList  pokemons={pokemons} loadPokemons={loadPokemons} isNext={nextUrl}/>
+      
       </View>
+     
     </SafeAreaView>
   )
 }

@@ -19,7 +19,7 @@ const HomeSearch = ({ onSearch }) => {
         >
     
           <TextInput
-            placeholder="Search NFTs"
+            placeholder="Search Pokemons"
             style={{ flex: 1 }}
             onChangeText={onSearch}
            

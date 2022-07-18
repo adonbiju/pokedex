@@ -32,4 +32,6 @@ export async function getPokemonDetailsByUrlApi(url) {
       throw error;
     }
   }
+
+
   

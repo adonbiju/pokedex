@@ -4,6 +4,7 @@ import DetailHeader from '../components/DetailHeader'
 import {getPokemonDetailsApi}  from '../API/API'
 import { TabNavigator } from '../navigation/TabNavigator'
 import { View, StyleSheet,Text,ScrollView} from "react-native";
+import { RectButton } from "../components/Button";
 
 const Details = (props) => {
   const {
@@ -23,16 +24,20 @@ const Details = (props) => {
   },[params]);
   
   if (!pokemon) return null;
-
   return (
     <>
      <DetailHeader name={pokemon.name}
        order={pokemon.order}
        image={pokemon.sprites.other["official-artwork"].front_default}
-       type={pokemon.types[0].type.name} />
+       type={pokemon.types[0].type.name}
+       navigation={navigation} />
      <View style={styles.tabsContainer}>
       <TabNavigator pokemon={pokemon}/>
+      
      </View>
+     
+     
+
       
      </>
   )
