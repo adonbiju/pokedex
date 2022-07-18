@@ -2,11 +2,14 @@ import { useState ,useEffect} from "react";
 import { View,SafeAreaView, FlatList ,Text } from "react-native";
 import PokemonList from "../components/PokemonList"; 
  import { getPokemonDetailsByUrlApi,getPokemonsApi } from "../API/API";
+import HomeSearch from "../components/HomeSearch";
+import FocusedStatusBar from "../components/FocusedStatusBar";
 
 const Home = () => {
     const [pokemons, setPokemons] = useState([]);
     const [nextUrl, setnextUrl] = useState(null)
-
+    
+    
     useEffect(() => {
         (async () => {
           await loadPokemons();
@@ -35,9 +38,27 @@ const Home = () => {
           console.error(error);
         }
       };
+      const handleSearch = (value) => {
+        if (value.length === 0) {
+          setPokemons(pokemons);
+        }
+    
+        const filteredData = pokemons.filter((item) =>
+          item.name.toLowerCase().includes(value.toLowerCase())
+        );
+    
+        if (filteredData.length === 0) {
+          console.log("filterdata====?")
+          setPokemons(pokemons);
+        } else {
+          setPokemons(filteredData);
+        }
+      }
   return (
-    <SafeAreaView>
-      <View >
+    <SafeAreaView >
+      <FocusedStatusBar backgroundColor={"#001F2D"} />
+      <View  >
+      <HomeSearch onSearch={handleSearch} />
        <PokemonList  pokemons={pokemons} loadPokemons={loadPokemons} isNext={nextUrl}/>
       </View>
     </SafeAreaView>
