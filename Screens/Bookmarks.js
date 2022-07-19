@@ -4,15 +4,20 @@ import getColorByPokemonType from "../constants/constants";
 import { BookmarkBackButton } from "../components/Button";
 import assets from '../constants/assets'
 import {capitalize } from 'lodash'
+import Nodata from "../components/Nodata";
 const Bookmarks = (props) => {
   const { navigation, route: { params } } = props;
  // console.log(params.bookmarked[0].name)
   const pokemon=params.bookmarked
-  //console.log(pokemon)
+
+  if(pokemon.type===undefined){
+   return <Nodata/>
+  }
   const pokemonColor = getColorByPokemonType(pokemon.type);
   const bgStyles = { backgroundColor: pokemonColor, ...styles.bgStyles };
   return (
     <SafeAreaView  >
+
     <View style={{marginTop:20}}>
     <View style={{paddingBottom:15,paddingTop:10}}>
     <BookmarkBackButton 
