@@ -6,12 +6,14 @@ import HomeSearch from "../components/HomeSearch";
 import FocusedStatusBar from "../components/FocusedStatusBar";
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import { RectButton } from "../components/Button";
+import { useNavigation } from "@react-navigation/native";
 
 const Home = () => {
     const [pokemons, setPokemons] = useState([]);
     const [nextUrl, setnextUrl] = useState(null)
-    
-    
+    const [bookmarked,setbookmarked]=useState([])
+    const navigation = useNavigation();
+
     useEffect(() => {
         (async () => {
           await loadPokemons();
@@ -50,7 +52,7 @@ const Home = () => {
         );
     
         if (filteredData.length === 0) {
-          console.log("filterdata====?")
+          //console.log("filterdata====?")
           setPokemons(pokemons);
         } else {
           setPokemons(filteredData);
@@ -63,19 +65,22 @@ const getData = async () => {
     //console.log(value)
     if(value !== null) {
       // value previously stored
+      //console.log(value)
+      //console.log("----------------------")
+      setbookmarked(JSON.parse(value) )
     }
   } catch(e) {
     // error reading value
   }
 }
-
+getData()
 //-----------------------------
   return (
     <SafeAreaView >
   
       <FocusedStatusBar backgroundColor={"#001F2D"} />
       <View  >
-      <RectButton bookmarks={getData}/>
+      <RectButton  handlePress={() => navigation.navigate("Bookmarks", { bookmarked})} />
       <HomeSearch onSearch={handleSearch} />
        <PokemonList  pokemons={pokemons} loadPokemons={loadPokemons} isNext={nextUrl}/>
       

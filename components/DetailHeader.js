@@ -9,6 +9,15 @@ import AsyncStorage from '@react-native-async-storage/async-storage';
 const DetailHeader = (props) => {
 const { name, order, image, type,navigation } = props;
 
+
+
+const pokemonObj={
+  name:name,
+  order:order,
+  image:image,
+  type:type
+}
+
  //console.log(name)
     const color = getColorByPokemonType(type);
     const bgStyles = [{ backgroundColor: color, ...styles.bg }];
@@ -30,8 +39,8 @@ const { name, order, image, type,navigation } = props;
           
              async() => {
               try {
-                const value=props
-                const jsonValue = JSON.stringify(value)
+  
+                const jsonValue = JSON.stringify(pokemonObj)
                 await AsyncStorage.setItem('@storage_Key', jsonValue)
                 Alert.alert('Bookmarked!!!! ')
               } catch (e) {

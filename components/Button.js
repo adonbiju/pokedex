@@ -27,7 +27,7 @@ export const CircleButton= ({ imgUrl, handlePress,handleBookMarkPress, ...props 
   }
 
   
-  export const RectButton = () => {
+  export const RectButton = ({handlePress, ...props }) => {
     return (
         <TouchableOpacity
       style={{
@@ -35,7 +35,7 @@ export const CircleButton= ({ imgUrl, handlePress,handleBookMarkPress, ...props 
         padding:20,
         borderRadius: 10
       }}
-    
+      onPress={handlePress}
     >
       <Text
         style={{
@@ -43,7 +43,7 @@ export const CircleButton= ({ imgUrl, handlePress,handleBookMarkPress, ...props 
           textAlign: "center",
         }}
       >
-        Place a bid
+        Bookmarks
       </Text>
     </TouchableOpacity>
     )

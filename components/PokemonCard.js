@@ -2,7 +2,7 @@ import { View ,Text, StyleSheet ,Image , TouchableWithoutFeedback } from "react-
 import { useNavigation } from "@react-navigation/native";
 import getColorByPokemonType from "../constants/constants";
 const PokemonCard = (props) => {
-  
+
   const { pokemon } = props;
   //console.log(pokemon.type)
   const navigation = useNavigation();
