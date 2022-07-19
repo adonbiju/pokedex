@@ -1,5 +1,5 @@
 import { useState ,useEffect} from "react";
-import { View,SafeAreaView} from "react-native";
+import { View,SafeAreaView,StyleSheet,Text} from "react-native";
 import PokemonList from "../components/PokemonList"; 
  import { getPokemonDetailsByUrlApi,getPokemonsApi } from "../API/API";
 import HomeSearch from "../components/HomeSearch";
@@ -7,6 +7,7 @@ import FocusedStatusBar from "../components/FocusedStatusBar";
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import { RectButton } from "../components/Button";
 import { useNavigation } from "@react-navigation/native";
+
 
 const Home = () => {
     const [pokemons, setPokemons] = useState([]);
@@ -68,6 +69,7 @@ const getData = async () => {
       //console.log(value)
       //console.log("----------------------")
       setbookmarked(JSON.parse(value) )
+      
     }
   } catch(e) {
     // error reading value
@@ -76,16 +78,29 @@ const getData = async () => {
 getData()
 //-----------------------------
   return (
-    <SafeAreaView >
-  
+    <SafeAreaView  >
       <FocusedStatusBar backgroundColor={"#001F2D"} />
-      <View  >
-      <RectButton  handlePress={() => navigation.navigate("Bookmarks", { bookmarked})} />
-      <HomeSearch onSearch={handleSearch} />
-       <PokemonList  pokemons={pokemons} loadPokemons={loadPokemons} isNext={nextUrl}/>
-      
+      <View  style={{
+        width: "40%",
+        position: "absolute",
+        bottom: 100,
+        justifyContent: "center",
+        alignItems: "center",
+        alignSelf: 'flex-end',
+        zIndex: 1,
+        
+      }}>
+        <RectButton  handlePress={() => navigation.navigate("Bookmarks", { bookmarked})} />
+        
       </View>
-     
+
+ 
+
+      <View>
+          <HomeSearch onSearch={handleSearch} />
+          {/* <RectButton  handlePress={() => navigation.navigate("Bookmarks", { bookmarked})} /> */}
+          <PokemonList  pokemons={pokemons} loadPokemons={loadPokemons} isNext={nextUrl}/>
+      </View> 
     </SafeAreaView>
   )
 }

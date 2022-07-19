@@ -1,17 +1,27 @@
-import { FlatList, View ,Platform ,StyleSheet,Text,TouchableWithoutFeedback,Image } from "react-native";
+import { View ,Platform ,StyleSheet,Text,TouchableWithoutFeedback,Image ,SafeAreaView} from "react-native";
 import React from 'react'
-import PokemonCard from "../components/PokemonCard";
 import getColorByPokemonType from "../constants/constants";
+import { BookmarkBackButton } from "../components/Button";
+import assets from '../constants/assets'
 
 const Bookmarks = (props) => {
   const { navigation, route: { params } } = props;
  // console.log(params.bookmarked[0].name)
   const pokemon=params.bookmarked
-  console.log(pokemon)
+  //console.log(pokemon)
   const pokemonColor = getColorByPokemonType(pokemon.type);
   const bgStyles = { backgroundColor: pokemonColor, ...styles.bgStyles };
   return (
-    <TouchableWithoutFeedback>
+    <SafeAreaView  >
+    <View style={{marginTop:20}}>
+    <View style={{paddingBottom:15,paddingTop:10}}>
+    <BookmarkBackButton 
+       style={{alignSelf: 'flex-start',}}
+        imgUrl={assets.leftarrow}
+        handlePress={() => navigation.goBack()}        
+      />
+    <Text  style={styles.title}>My Bookmarks</Text>
+    </View>
     <View style={styles.card}>
       <View style={styles.spacing}>
         <View style={bgStyles}>
@@ -25,12 +35,8 @@ const Bookmarks = (props) => {
         </View>
       </View>
     </View>
-  </TouchableWithoutFeedback>
-  // <View>
-  //     <Text>
-  //     {pokemon.name} {pokemon.type}
-  //     </Text>
-  //   </View>
+  </View>
+  </SafeAreaView  >
   )
 }
 
@@ -40,9 +46,18 @@ export default Bookmarks
 
 
 const styles = StyleSheet.create({
+
+title: {
+    fontSize: 35,
+    fontWeight: 'bold',
+    marginRight:0,
+    color: '#000000',
+    alignSelf: 'flex-end'
+},
   card: {
-    flex: 1,
-    height: 50,
+    width: "100%",
+    height: 100,
+    
   },
   spacing: {
     flex: 1,

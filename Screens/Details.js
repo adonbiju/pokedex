@@ -50,6 +50,6 @@ const styles = StyleSheet.create({
       width: '100%',
       flex: 1,
       paddingHorizontal: 0,
-      paddingTop: 280
+      paddingTop: 240
   }
 })

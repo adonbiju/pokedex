@@ -3,12 +3,9 @@ import React from 'react'
 import { calculateHeight,calculateweight } from "../Calculation/Calculation";
 
 const AboutTab = (props) => {
-   const { navigation, route: { params } } = props;
-  // console.log('=====================')
-  //console.log(params)
-  //console.log('=====================')
- const abilities = params.abilities.map(({ ability }) => ability.name).join(', ')
- const { feet, cm } = calculateHeight(params.height)
+  const { navigation, route: { params } } = props;
+  const abilities = params.abilities.map(({ ability }) => ability.name).join(', ')
+  const { feet, cm } = calculateHeight(params.height)
   const { lbs, kg } = calculateweight(params.weight)
   return (
     

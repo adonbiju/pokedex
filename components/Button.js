@@ -33,7 +33,7 @@ export const CircleButton= ({ imgUrl, handlePress,handleBookMarkPress, ...props 
       style={{
         backgroundColor: '#98D8D8',
         padding:20,
-        borderRadius: 10
+        borderRadius: 10,
       }}
       onPress={handlePress}
     >
@@ -45,6 +45,30 @@ export const CircleButton= ({ imgUrl, handlePress,handleBookMarkPress, ...props 
       >
         Bookmarks
       </Text>
+    </TouchableOpacity>
+    )
+  }
+  export const BookmarkBackButton= ({ imgUrl, handlePress, ...props }) => {
+    return (
+      <TouchableOpacity
+      style={{
+        width: 40,
+        height: 40,
+        backgroundColor:"#74858C",
+        position: "absolute",
+        borderRadius: 24,
+        alignItems: "center",
+        justifyContent: "center",
+        ...props,
+      }}
+      onPress={handlePress}
+      >
+      <Image
+          source={imgUrl}
+          resizeMode="contain"
+          style={{ width: 24, height: 24 }}
+        />
+  
     </TouchableOpacity>
     )
   }
