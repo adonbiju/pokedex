@@ -1,4 +1,4 @@
-import { View, Text,Image ,TextInput} from 'react-native'
+import { View,Image ,TextInput} from 'react-native'
 import React from 'react'
 import assets from '../constants/assets'
 

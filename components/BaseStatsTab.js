@@ -1,6 +1,6 @@
 import { View ,Text, StyleSheet} from "react-native"
 import React from 'react'
-import { map, capitalize } from "lodash";
+import { map, capitalize } from 'lodash'
 
 const BaseStatsTab = (props) => {
     const { navigation, route: { params } } = props;

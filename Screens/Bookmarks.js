@@ -3,7 +3,7 @@ import React from 'react'
 import getColorByPokemonType from "../constants/constants";
 import { BookmarkBackButton } from "../components/Button";
 import assets from '../constants/assets'
-
+import {capitalize } from 'lodash'
 const Bookmarks = (props) => {
   const { navigation, route: { params } } = props;
  // console.log(params.bookmarked[0].name)
@@ -28,7 +28,7 @@ const Bookmarks = (props) => {
           <Text style={styles.number}>
             #{`${pokemon.order}`.padStart(3, 0)}
           </Text>
-          <Text style={styles.name}>{pokemon.name}</Text>
+          <Text style={styles.name}>{capitalize(pokemon.name)}</Text>
 
           <View style={styles.shadow} />
           <Image source={{ uri: pokemon.image }} style={styles.image} />

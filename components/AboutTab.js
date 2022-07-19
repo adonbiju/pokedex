@@ -1,6 +1,7 @@
 import { View ,Text, StyleSheet } from "react-native"
 import React from 'react'
 import { calculateHeight,calculateweight } from "../Calculation/Calculation";
+import {capitalize } from 'lodash'
 
 const AboutTab = (props) => {
   const { navigation, route: { params } } = props;
@@ -10,7 +11,7 @@ const AboutTab = (props) => {
   return (
     
     <View style={styles.container}>
-    <Text style={styles.title}>{params.name}</Text>
+    <Text style={styles.title}>{capitalize(params.name)}</Text>
     <View style={styles.wrapper}>
         <Text style={styles.label}>Weight:</Text>
         <Text>{lbs} {kg}</Text>

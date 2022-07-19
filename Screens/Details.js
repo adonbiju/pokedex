@@ -1,10 +1,9 @@
 import { useEffect, useState } from 'react'
-import { SafeAreaView ,FlatList} from 'react-native-safe-area-context'
 import DetailHeader from '../components/DetailHeader'
 import {getPokemonDetailsApi}  from '../API/API'
 import { TabNavigator } from '../navigation/TabNavigator'
 import { View, StyleSheet,Text,ScrollView} from "react-native";
-import { RectButton } from "../components/Button";
+
 
 const Details = (props) => {
   const {

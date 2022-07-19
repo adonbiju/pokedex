@@ -4,7 +4,7 @@ import getColorByPokemonType from "../constants/constants";
  import { CircleButton } from './Button';
 import assets from '../constants/assets'
 import AsyncStorage from '@react-native-async-storage/async-storage';
-
+import {capitalize } from 'lodash'
 
 const DetailHeader = (props) => {
 const { name, order, image, type,navigation } = props;
@@ -53,7 +53,7 @@ const pokemonObj={
     </View>
 
       <View style={styles.header}>
-        <Text style={styles.name}>{name}</Text>
+        <Text style={styles.name}>{capitalize(name)}</Text>
         <Text style={styles.order}>#{`${order}`.padStart(3, 0)}</Text>
       </View>
       <View style={styles.contentImg}>
